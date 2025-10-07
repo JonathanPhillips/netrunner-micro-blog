@@ -1,0 +1,293 @@
+/* ===== CYBERPUNK MICRO.BLOG CUSTOM CSS ===== */
+/* Paste this into your Micro.blog Edit CSS section */
+
+/* Import Cyberpunk Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Roboto+Mono:wght@300;400;500;700&display=swap');
+
+/* Root Variables for Cyberpunk Theme */
+:root {
+    --primary-cyan: #00ffff;
+    --secondary-cyan: #00cccc;
+    --dark-cyan: #006666;
+    --primary-magenta: #ff00ff;
+    --primary-green: #00ff00;
+    --bg-black: #000000;
+    --bg-dark: #0a0a0a;
+    --bg-panel: #001122;
+    --text-primary: #00ffff;
+    --text-secondary: #006666;
+    --text-dim: #004444;
+    --border-color: #00ffff;
+}
+
+/* Override Default Body Styling */
+body {
+    font-family: 'Roboto Mono', monospace !important;
+    background: radial-gradient(circle at center, var(--bg-dark) 0%, var(--bg-black) 100%) !important;
+    color: var(--text-primary) !important;
+    min-height: 100vh;
+    position: relative;
+}
+
+/* Add Scanlines Effect */
+body::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 9999;
+    background: linear-gradient(
+        transparent 50%,
+        rgba(0, 255, 255, 0.03) 50%
+    );
+    background-size: 100% 4px;
+    animation: scanlines 8s linear infinite;
+}
+
+@keyframes scanlines {
+    0% { background-position: 0 0; }
+    100% { background-position: 0 10px; }
+}
+
+/* Site Header/Title Styling */
+.microblog-header,
+.site-header,
+h1.site-title,
+h1 {
+    font-family: 'Orbitron', monospace !important;
+    color: var(--primary-cyan) !important;
+    text-shadow: 
+        0 0 10px var(--primary-cyan),
+        0 0 20px var(--primary-cyan),
+        0 0 40px var(--primary-cyan);
+    background: linear-gradient(135deg, var(--bg-panel) 0%, #002244 100%);
+    border: 2px solid var(--border-color) !important;
+    padding: 20px !important;
+    margin-bottom: 20px !important;
+    box-shadow: 
+        0 0 30px rgba(0, 255, 255, 0.3),
+        inset 0 1px 0 rgba(255, 255, 255, 0.1);
+    position: relative;
+    overflow: hidden;
+}
+
+/* Glitch Effect on Main Title */
+.site-title,
+h1 {
+    animation: glitch 3s infinite;
+}
+
+@keyframes glitch {
+    0%, 90%, 100% { transform: translate(0); }
+    10% { transform: translate(-2px, 1px); }
+    20% { transform: translate(2px, -1px); }
+    30% { transform: translate(-1px, 2px); }
+    40% { transform: translate(1px, -2px); }
+    50% { transform: translate(-2px, 1px); }
+    60% { transform: translate(2px, -1px); }
+    70% { transform: translate(-1px, 2px); }
+    80% { transform: translate(1px, -2px); }
+}
+
+/* Navigation/Menu Styling */
+nav,
+.navigation,
+.menu {
+    background: var(--bg-panel) !important;
+    border: 1px solid var(--border-color) !important;
+    padding: 15px !important;
+    margin: 20px 0 !important;
+}
+
+nav a,
+.navigation a,
+.menu a {
+    color: var(--text-primary) !important;
+    text-decoration: none !important;
+    padding: 8px 15px !important;
+    border: 1px solid var(--text-dim) !important;
+    margin: 0 5px !important;
+    transition: all 0.3s ease !important;
+    font-family: 'Roboto Mono', monospace !important;
+}
+
+nav a:hover,
+.navigation a:hover,
+.menu a:hover {
+    color: var(--bg-black) !important;
+    background: var(--primary-cyan) !important;
+    border-color: var(--primary-cyan) !important;
+    box-shadow: 0 0 15px var(--primary-cyan) !important;
+    text-shadow: none !important;
+}
+
+/* Blog Post Styling */
+.post,
+article,
+.entry {
+    background: linear-gradient(135deg, var(--bg-panel) 0%, #001a33 100%) !important;
+    border: 1px solid var(--border-color) !important;
+    padding: 25px !important;
+    margin: 20px 0 !important;
+    box-shadow: 
+        0 0 20px rgba(0, 255, 255, 0.1),
+        inset 0 1px 0 rgba(255, 255, 255, 0.05) !important;
+    position: relative;
+}
+
+.post::before,
+article::before,
+.entry::before {
+    content: "> LOG_ENTRY_";
+    position: absolute;
+    top: 10px;
+    right: 15px;
+    color: var(--text-dim);
+    font-size: 0.8rem;
+    font-family: 'Roboto Mono', monospace;
+}
+
+/* Post Title */
+.post h2,
+.post h3,
+article h2,
+article h3,
+.entry h2,
+.entry h3 {
+    color: var(--primary-cyan) !important;
+    font-family: 'Orbitron', monospace !important;
+    margin-bottom: 15px !important;
+    text-shadow: 0 0 10px var(--primary-cyan) !important;
+}
+
+/* Post Content */
+.post p,
+article p,
+.entry p {
+    color: var(--text-primary) !important;
+    line-height: 1.6 !important;
+    margin-bottom: 15px !important;
+    font-family: 'Roboto Mono', monospace !important;
+}
+
+/* Links */
+a {
+    color: var(--primary-cyan) !important;
+    text-decoration: none !important;
+    transition: all 0.3s ease !important;
+}
+
+a:hover {
+    color: var(--primary-magenta) !important;
+    text-shadow: 0 0 8px var(--primary-magenta) !important;
+}
+
+/* Sidebar Styling */
+.sidebar,
+aside {
+    background: var(--bg-panel) !important;
+    border: 1px solid var(--border-color) !important;
+    padding: 20px !important;
+    margin: 20px 0 !important;
+}
+
+.sidebar h3,
+.sidebar h4,
+aside h3,
+aside h4 {
+    color: var(--primary-cyan) !important;
+    font-family: 'Orbitron', monospace !important;
+    margin-bottom: 15px !important;
+    text-shadow: 0 0 8px var(--primary-cyan) !important;
+}
+
+/* Form Elements */
+input,
+textarea,
+button {
+    background: var(--bg-dark) !important;
+    border: 1px solid var(--border-color) !important;
+    color: var(--text-primary) !important;
+    padding: 10px !important;
+    font-family: 'Roboto Mono', monospace !important;
+}
+
+input:focus,
+textarea:focus {
+    border-color: var(--primary-cyan) !important;
+    box-shadow: 0 0 10px rgba(0, 255, 255, 0.3) !important;
+    outline: none !important;
+}
+
+button {
+    background: linear-gradient(135deg, var(--dark-cyan) 0%, var(--secondary-cyan) 100%) !important;
+    cursor: pointer !important;
+    transition: all 0.3s ease !important;
+}
+
+button:hover {
+    box-shadow: 0 0 15px var(--primary-cyan) !important;
+    transform: translateY(-2px) !important;
+}
+
+/* Footer */
+footer {
+    background: var(--bg-panel) !important;
+    border-top: 2px solid var(--border-color) !important;
+    padding: 20px !important;
+    margin-top: 40px !important;
+    text-align: center !important;
+    color: var(--text-dim) !important;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .site-title,
+    h1 {
+        font-size: 2rem !important;
+    }
+    
+    nav a,
+    .navigation a,
+    .menu a {
+        display: block !important;
+        margin: 5px 0 !important;
+    }
+}
+
+/* Terminal-style Status Messages */
+.status-message::before {
+    content: "> SYSTEM_STATUS: ";
+    color: var(--primary-green);
+    font-weight: bold;
+}
+
+/* Cyber Quote Styling */
+blockquote {
+    border-left: 3px solid var(--primary-cyan) !important;
+    background: rgba(0, 255, 255, 0.05) !important;
+    padding: 15px 20px !important;
+    margin: 20px 0 !important;
+    font-style: italic !important;
+    color: var(--text-primary) !important;
+}
+
+/* Code Styling */
+code,
+pre {
+    background: var(--bg-dark) !important;
+    border: 1px solid var(--border-color) !important;
+    color: var(--primary-green) !important;
+    padding: 5px 8px !important;
+    font-family: 'Roboto Mono', monospace !important;
+    border-radius: 2px !important;
+}
+
+pre {
+    padding: 15px !important;
+    overflow-x: auto !important;
+    margin: 15px 0 !important;
+}
