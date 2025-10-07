@@ -1,7 +1,6 @@
-baseURL: "https://netrunner789.micro.blog"
+baseURL: "/"
 languageCode: "en-us"
 title: "NETRUNNER"
-theme: "netrunner-theme"
 
 author:
   name: "Netrunner"
