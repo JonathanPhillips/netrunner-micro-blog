@@ -33,10 +33,10 @@
         <!-- Navigation -->
         <nav class="main-nav">
             <a href="{{ "/" | relURL }}" class="nav-btn {{ if .IsHome }}active{{ end }}">[HOME]</a>
-            <a href="{{ "/archive" | relURL }}" class="nav-btn {{ if eq .URL "/archive/" }}active{{ end }}">[ARCHIVE]</a>
-            <a href="{{ "/about" | relURL }}" class="nav-btn {{ if eq .URL "/about/" }}active{{ end }}">[ABOUT]</a>
-            <a href="{{ "/photos" | relURL }}" class="nav-btn {{ if eq .URL "/photos/" }}active{{ end }}">[PHOTOS]</a>
-            <a href="{{ "/contact" | relURL }}" class="nav-btn {{ if eq .URL "/contact/" }}active{{ end }}">[CONTACT]</a>
+            <a href="{{ "/archive" | relURL }}" class="nav-btn {{ if eq .RelPermalink "/archive/" }}active{{ end }}">[ARCHIVE]</a>
+            <a href="{{ "/about" | relURL }}" class="nav-btn {{ if eq .RelPermalink "/about/" }}active{{ end }}">[ABOUT]</a>
+            <a href="{{ "/photos" | relURL }}" class="nav-btn {{ if eq .RelPermalink "/photos/" }}active{{ end }}">[PHOTOS]</a>
+            <a href="{{ "/contact" | relURL }}" class="nav-btn {{ if eq .RelPermalink "/contact/" }}active{{ end }}">[CONTACT]</a>
         </nav>
 
         <!-- Content Area -->
@@ -64,7 +64,7 @@
                     <a href="{{ "/feed.xml" | relURL }}">[RSS]</a> | 
                     <a href="{{ "/feed.json" | relURL }}">[JSON]</a> | 
                     <a href="{{ "/archive" | relURL }}">[ARCHIVE]</a> | 
-                    <a href="https://micro.blog/{{ .Site.Author.username }}">[MICRO.BLOG]</a>
+                    <a href="https://micro.blog/{{ .Site.Params.author.username | default "netrunner789" }}">[MICRO.BLOG]</a>
                 </p>
             </div>
         </footer>

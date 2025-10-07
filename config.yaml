@@ -2,13 +2,12 @@ baseURL: "https://jonathanphillips.github.io/netrunner-micro-blog/"
 languageCode: "en-us"
 title: "NETRUNNER"
 
-author:
-  name: "Netrunner"
-  username: "netrunner789"
-  email: "netrunner789@proton.me"
-
-# Micro.blog specific settings
+# Site parameters
 params:
+  author:
+    name: "Netrunner"
+    username: "netrunner789"
+    email: "netrunner789@proton.me"
   subtitle: "jacking_into_cyberspace_v2.077"
   include_conversation: true
   show_photos: true
@@ -23,8 +22,9 @@ params:
       url: "https://yesterweb.org"
 
 # Content settings
-paginate: 10
-paginatePath: "page"
+pagination:
+  pagerSize: 10
+  path: "page"
 
 # Taxonomies
 taxonomies:
@@ -80,7 +80,7 @@ privacy:
     disable: true
   instagram:
     disable: true
-  twitter:
+  x:
     disable: true
   vimeo:
     disable: true
