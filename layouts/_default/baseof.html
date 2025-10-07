@@ -6,7 +6,7 @@
     <title>{{ .Site.Title }} // {{ block "title" . }}{{ .Title }}{{ end }}</title>
     <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Roboto+Mono:wght@300;400;500&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="{{ "css/style.css" | relURL }}">
-    <link rel="alternate" type="application/rss+xml" href="{{ .Site.RSSLink }}" />
+    {{ with .OutputFormats.Get "RSS" }}<link rel="alternate" type="application/rss+xml" href="{{ .Permalink }}" />{{ end }}
     <link rel="alternate" type="application/json" href="{{ "feed.json" | relURL }}" />
     <link rel="micropub" href="https://micro.blog/micropub" />
     <link rel="webmention" href="https://micro.blog/webmention" />

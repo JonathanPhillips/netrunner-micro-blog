@@ -6,8 +6,7 @@
     </div>
     
     <div class="posts-container">
-        {{ $paginator := .Paginate (where .Site.RegularPages "Type" "post") 10 }}
-        {{ range $paginator.Pages }}
+        {{ range first 10 .Site.RegularPages }}
         <article class="blog-post">
             <div class="post-header">
                 <div class="post-meta">
@@ -53,25 +52,6 @@
                 </div>
             </div>
         </article>
-        {{ end }}
-        
-        <!-- Pagination -->
-        {{ if gt $paginator.TotalPages 1 }}
-        <div class="pagination">
-            {{ if $paginator.HasPrev }}
-            <a href="{{ $paginator.Prev.URL }}" class="nav-btn">&lt;&lt; NEWER</a>
-            {{ else }}
-            <span class="nav-btn disabled">&lt;&lt; NEWER</span>
-            {{ end }}
-            
-            <span class="page-info">PAGE {{ $paginator.PageNumber }}/{{ $paginator.TotalPages }}</span>
-            
-            {{ if $paginator.HasNext }}
-            <a href="{{ $paginator.Next.URL }}" class="nav-btn">OLDER &gt;&gt;</a>
-            {{ else }}
-            <span class="nav-btn disabled">OLDER &gt;&gt;</span>
-            {{ end }}
-        </div>
         {{ end }}
     </div>
 </div>
