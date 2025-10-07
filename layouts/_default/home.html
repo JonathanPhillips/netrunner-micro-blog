@@ -1,0 +1,35 @@
+{{ define "main" }}
+<div class="blog-feed">
+    <div class="section-header">
+        <h2>NEURAL_LOG.entries</h2>
+        <span class="section-status">// STREAMING</span>
+    </div>
+    
+    <div class="posts-container">
+        {{ range first 10 .Site.RegularPages }}
+        <article class="blog-post">
+            <div class="post-header">
+                <div class="post-meta">
+                    <span class="post-date">{{ .Date.Format "2006.01.02" }}</span>
+                    <span class="post-time">{{ .Date.Format "15:04:05" }}</span>
+                </div>
+            </div>
+            
+            <div class="post-body">
+                <h3 class="post-title">
+                    <a href="{{ .Permalink }}">{{ .Title | default "Untitled Entry" }}</a>
+                </h3>
+                
+                <div class="post-content">
+                    {{ .Summary }}
+                </div>
+                
+                <div class="post-footer">
+                    <a href="{{ .Permalink }}" class="read-more">ACCESS_FULL_LOG &gt;&gt;</a>
+                </div>
+            </div>
+        </article>
+        {{ end }}
+    </div>
+</div>
+{{ end }}

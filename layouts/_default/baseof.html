@@ -24,7 +24,7 @@
                 <p class="site-subtitle">// {{ .Site.Params.subtitle | default "jacking_into_cyberspace_v2.077" }}</p>
                 <div class="status-bar">
                     <span class="status-item">STATUS: <span class="online">ONLINE</span></span>
-                    <span class="status-item">POSTS: <span id="post-count">{{ len (where .Site.RegularPages "Type" "post") }}</span></span>
+                    <span class="status-item">POSTS: <span id="post-count">{{ len .Site.RegularPages }}</span></span>
                     <span class="status-item">TIME: <span id="current-time">00:00:00</span></span>
                 </div>
             </div>
