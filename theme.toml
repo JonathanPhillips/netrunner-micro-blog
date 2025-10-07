@@ -1,0 +1,12 @@
+name = "Netrunner"
+license = "MIT"
+licenselink = "https://github.com/JonathanPhillips/netrunner-micro-blog/blob/main/LICENSE"
+description = "A cyberpunk terminal-themed Hugo theme for Micro.blog"
+homepage = "https://github.com/JonathanPhillips/netrunner-micro-blog"
+tags = ["cyberpunk", "terminal", "indie-web", "micro.blog"]
+features = ["responsive", "blog", "privacy-focused"]
+min_version = "0.41.0"
+
+[author]
+  name = "netrunner789"
+  homepage = "https://netrunner789.micro.blog"
