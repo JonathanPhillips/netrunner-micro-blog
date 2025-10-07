@@ -1,0 +1,71 @@
+{{ define "main" }}
+<article class="single-post">
+    <div class="section-header">
+        {{ if .Title }}
+        <h2>[{{ .Title | upper }}]</h2>
+        {{ else }}
+        <h2>LOG_ENTRY.{{ .Date.Format "20060102" }}</h2>
+        {{ end }}
+        <span class="section-status">// ACCESSED</span>
+    </div>
+    
+    <div class="section-content">
+        <div class="post-meta-full">
+            <div class="terminal-window">
+                <p class="terminal-line">&gt; Retrieving log entry...</p>
+                <p class="terminal-line">&gt; Timestamp: {{ .Date.Format "2006.01.02 15:04:05" }}</p>
+                {{ if .Params.categories }}
+                <p class="terminal-line">&gt; Category: {{ index .Params.categories 0 | upper }}</p>
+                {{ end }}
+                {{ if .Params.tags }}
+                <p class="terminal-line">&gt; Tags: {{ range $index, $tag := .Params.tags }}{{ if $index }}, {{ end }}#{{ $tag }}{{ end }}</p>
+                {{ end }}
+                <p class="terminal-line">&gt; <span class="success">DECRYPTED</span></p>
+            </div>
+        </div>
+        
+        <div class="post-content-full">
+            {{ if .Params.photos }}
+            <div class="post-photos">
+                {{ range .Params.photos }}
+                <img src="{{ . }}" alt="Photo" class="post-photo">
+                {{ end }}
+            </div>
+            {{ end }}
+            
+            <div class="terminal-window">
+                {{ .Content }}
+            </div>
+        </div>
+        
+        <div class="post-navigation">
+            {{ if .PrevInSection }}
+            <a href="{{ .PrevInSection.Permalink }}" class="nav-btn">&lt;&lt; PREV LOG</a>
+            {{ else }}
+            <span class="nav-btn disabled">&lt;&lt; PREV LOG</span>
+            {{ end }}
+            
+            <a href="{{ "/" | relURL }}" class="nav-btn">[RETURN TO FEED]</a>
+            
+            {{ if .NextInSection }}
+            <a href="{{ .NextInSection.Permalink }}" class="nav-btn">NEXT LOG &gt;&gt;</a>
+            {{ else }}
+            <span class="nav-btn disabled">NEXT LOG &gt;&gt;</span>
+            {{ end }}
+        </div>
+        
+        {{ if .Site.Params.include_conversation }}
+        <div class="webmention-section">
+            <div class="section-header">
+                <h3>WEBMENTIONS.log</h3>
+                <span class="section-status">// MONITORING</span>
+            </div>
+            <div id="webmentions" class="webmentions-container">
+                <!-- Webmentions will be loaded here by JavaScript -->
+                <p class="loading-message">Scanning for incoming transmissions...</p>
+            </div>
+        </div>
+        {{ end }}
+    </div>
+</article>
+{{ end }}

@@ -1,0 +1,81 @@
+<!-- Right Panel - Status & Buttons -->
+<aside class="right-panel">
+    <div class="panel-header">
+        <h3>STATUS_MONITOR</h3>
+    </div>
+    <div class="panel-content">
+        <canvas id="activity-monitor" width="200" height="100"></canvas>
+        <div class="monitor-stats">
+            <p>CPU: <span class="stat-value">47%</span></p>
+            <p>MEM: <span class="stat-value">2.3GB</span></p>
+            <p>NET: <span class="stat-value">142kb/s</span></p>
+        </div>
+    </div>
+
+    <!-- Political Badges -->
+    <div class="panel-header">
+        <h3>SOLIDARITY</h3>
+    </div>
+    <div class="panel-content">
+        <div class="political-badges">
+            <!-- Real 88x31 badges -->
+            <img src="https://cyber.dabamos.de/88x31/antifa.gif" alt="Antifa" class="political-img">
+            <img src="https://cyber.dabamos.de/88x31/anarchy.gif" alt="Anarchy" class="political-img">
+            <img src="https://cyber.dabamos.de/88x31/antinazi.gif" alt="Anti-Nazi" class="political-img">
+            <img src="https://cyber.dabamos.de/88x31/anonymize.gif" alt="Anonymize" class="political-img">
+            
+            <!-- Custom badges for specific causes -->
+            <div class="custom-badge dsa-rose">
+                <span class="badge-symbol">🌹</span>
+                <span class="badge-text">DSA</span>
+            </div>
+            <div class="custom-badge acab">
+                <span class="badge-text-large glitch-text">ACAB</span>
+            </div>
+            <div class="custom-badge palestine">
+                <span class="badge-symbol-small">🇵🇸</span>
+                <span class="badge-text-med">FREE<br>PALESTINE</span>
+            </div>
+            <div class="custom-badge fuck-ice">
+                <span class="badge-text-large glitch-text-alt">FUCK<br>ICE</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- Music Player -->
+    <div class="panel-header">
+        <h3>AUDIO_STREAM</h3>
+    </div>
+    <div class="panel-content">
+        <div class="tape-deck">
+            <div class="cassette-player">
+                <div class="cassette">
+                    <div class="cassette-holes">◯ ◯</div>
+                    <div class="cassette-label">
+                        <p class="artist-name" id="current-artist">Wednesday</p>
+                        <p class="album-name" id="current-album">Bleeds</p>
+                    </div>
+                    <div class="cassette-holes">◯ ◯</div>
+                </div>
+            </div>
+            <div class="player-controls">
+                <button class="player-btn" onclick="previousTrack()">◄◄</button>
+                <button class="player-btn" onclick="playPause()">▶</button>
+                <button class="player-btn" onclick="stopTrack()">■</button>
+                <button class="player-btn" onclick="nextTrack()">►►</button>
+            </div>
+            <div class="tape-status">
+                <p class="deck-info">DECK: A // TYPE: CHROME</p>
+            </div>
+        </div>
+        
+        <div class="recent-rotation">
+            <p class="rotation-header">HEAVY ROTATION:</p>
+            <ul class="rotation-list">
+                <li>Tyler Childers - Snipe Hunter</li>
+                <li>Waxahatchee - Tigers Blood</li>
+                <li>S.G. Goodman - Planting By The Signs</li>
+            </ul>
+        </div>
+    </div>
+</aside>

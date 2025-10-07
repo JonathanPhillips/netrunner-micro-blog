@@ -1,0 +1,65 @@
+<!-- Left Panel - System Info -->
+<aside class="left-panel">
+    <div class="panel-header">
+        <h3>SYSTEM_INFO</h3>
+    </div>
+    <div class="panel-content">
+        <div class="info-block">
+            <p class="info-label">NODE_ID:</p>
+            <p class="info-value">0xN3TRUNN3R</p>
+        </div>
+        <div class="info-block">
+            <p class="info-label">UPTIME:</p>
+            <p class="info-value" id="uptime">00:00:00</p>
+        </div>
+        <div class="info-block">
+            <p class="info-label">TOTAL_POSTS:</p>
+            <p class="info-value">{{ len (where .Site.RegularPages "Type" "post") }}</p>
+        </div>
+        <div class="info-block">
+            <p class="info-label">BANDWIDTH:</p>
+            <div class="progress-bar">
+                <div class="progress-fill" style="width: 73%"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Categories -->
+    <div class="panel-header">
+        <h3>CATEGORIES</h3>
+    </div>
+    <div class="panel-content">
+        <ul class="cool-sites">
+            {{ range .Site.Taxonomies.categories }}
+            <li><a href="{{ .Page.Permalink }}">[{{ .Page.Title | upper }}]</a> ({{ .Count }})</li>
+            {{ end }}
+        </ul>
+    </div>
+
+    <!-- Recent Posts -->
+    <div class="panel-header">
+        <h3>RECENT_LOGS</h3>
+    </div>
+    <div class="panel-content">
+        <ul class="cool-sites">
+            {{ range first 5 (where .Site.RegularPages "Type" "post") }}
+            <li><a href="{{ .Permalink }}">[{{ .Date.Format "01.02" }}]</a> {{ if .Title }}{{ .Title | truncate 20 }}{{ else }}Log Entry{{ end }}</li>
+            {{ end }}
+        </ul>
+    </div>
+
+    <!-- Cool Sites -->
+    <div class="panel-header">
+        <h3>COOL_SITES</h3>
+    </div>
+    <div class="panel-content">
+        <ul class="cool-sites">
+            <li><a href="https://micro.blog" target="_blank">[Micro.blog]</a></li>
+            <li><a href="https://neocities.org" target="_blank">[Neocities]</a></li>
+            <li><a href="https://yesterweb.org" target="_blank">[Yesterweb]</a></li>
+            {{ range .Site.Params.cool_sites }}
+            <li><a href="{{ .url }}" target="_blank">[{{ .name }}]</a></li>
+            {{ end }}
+        </ul>
+    </div>
+</aside>

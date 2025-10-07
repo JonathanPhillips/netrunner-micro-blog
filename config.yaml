@@ -1,0 +1,89 @@
+baseURL: "https://netrunner789.micro.blog"
+languageCode: "en-us"
+title: "NETRUNNER"
+theme: "netrunner-theme"
+
+author:
+  name: "Netrunner"
+  username: "netrunner789"
+  email: "netrunner789@proton.me"
+
+# Micro.blog specific settings
+params:
+  subtitle: "jacking_into_cyberspace_v2.077"
+  include_conversation: true
+  show_photos: true
+  
+  # Cool sites for sidebar
+  cool_sites:
+    - name: "EFF"
+      url: "https://www.eff.org"
+    - name: "DSA"
+      url: "https://www.dsausa.org"
+    - name: "Yesterweb"
+      url: "https://yesterweb.org"
+
+# Content settings
+paginate: 10
+paginatePath: "page"
+
+# Taxonomies
+taxonomies:
+  category: "categories"
+  tag: "tags"
+
+# Permalinks
+permalinks:
+  posts: "/:year/:month/:day/:slug/"
+
+# Menu configuration
+menu:
+  main:
+    - name: "Home"
+      url: "/"
+      weight: 1
+    - name: "Archive" 
+      url: "/archive/"
+      weight: 2
+    - name: "About"
+      url: "/about/"
+      weight: 3
+    - name: "Photos"
+      url: "/photos/"
+      weight: 4
+    - name: "Contact"
+      url: "/contact/"
+      weight: 5
+
+# Output formats
+outputs:
+  home: ["HTML", "RSS", "JSON"]
+  page: ["HTML"]
+  section: ["HTML", "RSS"]
+
+# Media types
+mediaTypes:
+  application/json:
+    suffixes: ["json"]
+
+# Output formats
+outputFormats:
+  RSS:
+    mediaType: "application/rss+xml"
+    baseName: "feed"
+  JSON:
+    mediaType: "application/json"
+    baseName: "feed"
+
+# Privacy settings
+privacy:
+  googleAnalytics:
+    disable: true
+  instagram:
+    disable: true
+  twitter:
+    disable: true
+  vimeo:
+    disable: true
+  youtube:
+    disable: true

@@ -1,0 +1,47 @@
+{{ define "main" }}
+<section class="about-page">
+    <div class="section-header">
+        <h2>ABOUT_ME.txt</h2>
+        <span class="section-status">// DECRYPTED</span>
+    </div>
+    
+    <div class="section-content">
+        <div class="terminal-window">
+            <p class="terminal-line">&gt; Initializing netrunner protocol...</p>
+            <p class="terminal-line">&gt; Bypassing corporate firewalls...</p>
+            <p class="terminal-line">&gt; <span class="success">ACCESS GRANTED</span></p>
+            <br>
+            
+            {{ .Content }}
+            
+            <br>
+            <div class="stats-grid">
+                <div class="stat-item">
+                    <span class="stat-label">SKILLS:</span>
+                    <span class="stat-value">Python, Terraform, K8s, AWS, CI/CD</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-label">OBSESSIONS:</span>
+                    <span class="stat-value">Vintage Workwear, Amekaji, Vinyl Records</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-label">STATUS:</span>
+                    <span class="stat-value">Debugging infrastructure in vintage fatigues</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-label">TOTAL_POSTS:</span>
+                    <span class="stat-value">{{ len (where .Site.RegularPages "Type" "post") }}</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-label">SITE_UPTIME:</span>
+                    <span class="stat-value">{{ .Site.LastChange.Format "2006.01.02" }}</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-label">HOSTING:</span>
+                    <span class="stat-value">Micro.blog Neural Network</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{{ end }}

@@ -1,0 +1,78 @@
+{{ define "main" }}
+<div class="blog-feed">
+    <div class="section-header">
+        <h2>NEURAL_LOG.entries</h2>
+        <span class="section-status">// STREAMING</span>
+    </div>
+    
+    <div class="posts-container">
+        {{ $paginator := .Paginate (where .Site.RegularPages "Type" "post") 10 }}
+        {{ range $paginator.Pages }}
+        <article class="blog-post">
+            <div class="post-header">
+                <div class="post-meta">
+                    <span class="post-date">{{ .Date.Format "2006.01.02" }}</span>
+                    <span class="post-time">{{ .Date.Format "15:04:05" }}</span>
+                    {{ if .Params.categories }}
+                    <span class="post-category">// {{ index .Params.categories 0 | upper }}</span>
+                    {{ end }}
+                </div>
+            </div>
+            
+            <div class="post-content">
+                {{ if .Title }}
+                <h3 class="post-title">
+                    <a href="{{ .Permalink }}">[{{ .Title | upper }}]</a>
+                </h3>
+                {{ end }}
+                
+                <div class="terminal-window">
+                    {{ if .Params.photos }}
+                    <div class="post-photos">
+                        {{ range .Params.photos }}
+                        <img src="{{ . }}" alt="Photo" class="post-photo">
+                        {{ end }}
+                    </div>
+                    {{ end }}
+                    
+                    {{ .Content }}
+                </div>
+                
+                <div class="post-footer">
+                    <a href="{{ .Permalink }}" class="permalink">[PERMALINK]</a>
+                    {{ if .Site.Params.include_conversation }}
+                    <a href="{{ .Permalink }}#comments" class="comments">[REPLIES: <span class="comment-count">0</span>]</a>
+                    {{ end }}
+                    {{ if .Params.tags }}
+                    <div class="post-tags">
+                        {{ range .Params.tags }}
+                        <span class="tag">#{{ . }}</span>
+                        {{ end }}
+                    </div>
+                    {{ end }}
+                </div>
+            </div>
+        </article>
+        {{ end }}
+        
+        <!-- Pagination -->
+        {{ if gt $paginator.TotalPages 1 }}
+        <div class="pagination">
+            {{ if $paginator.HasPrev }}
+            <a href="{{ $paginator.Prev.URL }}" class="nav-btn">&lt;&lt; NEWER</a>
+            {{ else }}
+            <span class="nav-btn disabled">&lt;&lt; NEWER</span>
+            {{ end }}
+            
+            <span class="page-info">PAGE {{ $paginator.PageNumber }}/{{ $paginator.TotalPages }}</span>
+            
+            {{ if $paginator.HasNext }}
+            <a href="{{ $paginator.Next.URL }}" class="nav-btn">OLDER &gt;&gt;</a>
+            {{ else }}
+            <span class="nav-btn disabled">OLDER &gt;&gt;</span>
+            {{ end }}
+        </div>
+        {{ end }}
+    </div>
+</div>
+{{ end }}

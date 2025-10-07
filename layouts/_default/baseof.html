@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ .Site.Title }} // {{ block "title" . }}{{ .Title }}{{ end }}</title>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Roboto+Mono:wght@300;400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{{ "css/style.css" | relURL }}">
+    <link rel="alternate" type="application/rss+xml" href="{{ .Site.RSSLink }}" />
+    <link rel="alternate" type="application/json" href="{{ "feed.json" | relURL }}" />
+    <link rel="micropub" href="https://micro.blog/micropub" />
+    <link rel="webmention" href="https://micro.blog/webmention" />
+</head>
+<body>
+    <!-- Scanlines effect -->
+    <div class="scanlines"></div>
+    
+    <!-- Main Container -->
+    <div class="main-container">
+        <!-- Header -->
+        <header class="site-header">
+            <div class="header-content">
+                <h1 class="site-title glow">{{ .Site.Title | upper }}</h1>
+                <p class="site-subtitle">// {{ .Site.Params.subtitle | default "jacking_into_cyberspace_v2.077" }}</p>
+                <div class="status-bar">
+                    <span class="status-item">STATUS: <span class="online">ONLINE</span></span>
+                    <span class="status-item">POSTS: <span id="post-count">{{ len (where .Site.RegularPages "Type" "post") }}</span></span>
+                    <span class="status-item">TIME: <span id="current-time">00:00:00</span></span>
+                </div>
+            </div>
+        </header>
+
+        <!-- Navigation -->
+        <nav class="main-nav">
+            <a href="{{ "/" | relURL }}" class="nav-btn {{ if .IsHome }}active{{ end }}">[HOME]</a>
+            <a href="{{ "/archive" | relURL }}" class="nav-btn {{ if eq .URL "/archive/" }}active{{ end }}">[ARCHIVE]</a>
+            <a href="{{ "/about" | relURL }}" class="nav-btn {{ if eq .URL "/about/" }}active{{ end }}">[ABOUT]</a>
+            <a href="{{ "/photos" | relURL }}" class="nav-btn {{ if eq .URL "/photos/" }}active{{ end }}">[PHOTOS]</a>
+            <a href="{{ "/contact" | relURL }}" class="nav-btn {{ if eq .URL "/contact/" }}active{{ end }}">[CONTACT]</a>
+        </nav>
+
+        <!-- Content Area -->
+        <div class="content-grid">
+            <!-- Left Panel -->
+            {{ partial "sidebar-left.html" . }}
+
+            <!-- Main Content -->
+            <main class="main-content">
+                {{ block "main" . }}{{ end }}
+            </main>
+
+            <!-- Right Panel -->
+            {{ partial "sidebar-right.html" . }}
+        </div>
+
+        <!-- Footer -->
+        <footer class="site-footer">
+            <div class="footer-content">
+                <p class="footer-text">
+                    {{ .Site.Title | upper }} © {{ now.Format "2006" }} // Built with Hugo & Micro.blog // 
+                    <span class="footer-status">LAST_UPDATE: <span id="last-update">{{ now.Format "2006.01.02" }}</span></span>
+                </p>
+                <p class="footer-nav">
+                    <a href="{{ "/feed.xml" | relURL }}">[RSS]</a> | 
+                    <a href="{{ "/feed.json" | relURL }}">[JSON]</a> | 
+                    <a href="{{ "/archive" | relURL }}">[ARCHIVE]</a> | 
+                    <a href="https://micro.blog/{{ .Site.Author.username }}">[MICRO.BLOG]</a>
+                </p>
+            </div>
+        </footer>
+    </div>
+
+    <script src="{{ "js/main.js" | relURL }}"></script>
+</body>
+</html>
